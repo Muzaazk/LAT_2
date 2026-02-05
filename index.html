@@ -64,34 +64,42 @@
     </div>
 
     <div class="game-screen">
-        <img src="logo.png" alt="">
-        <div class="container-game-screen">
-            <div class="game-board">
-                <div class="hexagon">
-                    <svg id="hexSvg"></svg>
+      <img src="logo.png" alt="" />
+      <div class="container-game-screen">
+        <div class="game-board">
+          <div class="hexagon">
+            <svg id="hexSvg"></svg>
+          </div>
+          <div class="status-game">
+            <div class="wrapp-status-game">
+              <div class="wrap-current">
+                <h5 class="current">current:</h5>
+                <div id="currentRect"></div>
+                <h5>5</h5>
+              </div>
+              <div class="wrap-player">
+                <div class="player1">
+                  <div class="col-1">
+                    <div class="rec-player1"></div>
+                    <h6>Player 1</h6>
+                  </div>
+                  <h5 id="score1">score</h5>
                 </div>
-                <div class="status-game">
-                    <div class="wrapp-status-game">
-                        <h3>current:</h3>
-                        <div class="name">
-                            <div class="player1">
-                                <div class="rec-player1"></div>
-                                <h5>Player 1</h5>
-                                <h2>score</h2>
-                            </div>
-                            <div class="player2">
-                                <div class="rec-player2"></div>
-                                <h5>Player 2</h5>
-                                <h2>score</h2>
-                            </div>
-                        </div>
-                    </div>
+                <div class="player2">
+                  <div class="col-2">
+                    <div class="rec-player2"></div>
+                    <h6>Player 2</h6>
+                  </div>
+                  <h5 id="score2">score</h5>
                 </div>
+              </div>
             </div>
-            <div class="leaderboard">
-                <h3>Leaderboard</h3>
-            </div>
+          </div>
         </div>
+        <div class="leaderboard">
+          <h3>Leaderboard</h3>
+        </div>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
