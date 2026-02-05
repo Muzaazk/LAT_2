@@ -17,11 +17,9 @@ body {
 }
 
 .welcome-screen {
-  display: none;
   background-color: #03062a;
   padding: 20px;
   border-radius: 10px;
-  text-align: center;
 }
 
 .container-welcome-screen {
@@ -30,6 +28,7 @@ body {
 }
 .container .input-data {
   text-align: left;
+  align-items: left;
   padding-top: 40px;
 }
 
@@ -38,6 +37,10 @@ body {
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
+}
+
+.welcome-screen img {
+    margin-left: 250px;
 }
 .welcome-screen img,
 .game-screen img {
@@ -52,6 +55,7 @@ input[type="text"] {
 
 .game-screen {
   position: absolute;
+  display: none;
 }
 
 .container-game-screen {
@@ -68,7 +72,6 @@ input[type="text"] {
 }
 
 .hexagon {
-  background-color: aqua;
   height: 75%;
 }
 
@@ -134,4 +137,9 @@ input[type="text"] {
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+#hexSvg {
+    width: 100%;
+    height: 100%;
 }
