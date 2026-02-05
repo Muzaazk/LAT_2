@@ -1,12 +1,12 @@
-const HEX_SIZE = 25;
-const HEX_WIDTH = 0;
-const HEX_HEIGHT = HEX_SIZE / 2;
+const HEX_SIZE = 20;
+const HEX_WIDTH = Math.sqrt(3) * HEX_SIZE;
+const HEX_HEIGHT = HEX_SIZE * 2;
 const BOARD_ROW = 8;
 const BOARD_COL = 10;
 
 const HEX_COLOR = "#ffffff2f";
 const HEX_DISABLE_COLOR = "#646464";
-const HEX_COLOR_PLAYER1 = "rgb(203, 25, 25)f";
+const HEX_COLOR_PLAYER1 = "rgb(203, 25, 25)";
 const HEX_COLOR_PLAYER2 = "rgb(42, 113, 205)";
 
 let gameState = {
@@ -43,7 +43,6 @@ startButton.style.cursor = "not-allowed";
 opponents.forEach((opponent) => {
   opponent.addEventListener("change", function () {
     const chose = opponent.value;
-    validatePlayButton;
     if (chose === "bot") {
       inputPlayer2.style.display = "none";
       player2.value = "bot";
@@ -51,6 +50,7 @@ opponents.forEach((opponent) => {
       inputPlayer2.style.display = "inline";
       player2.value = "Player 2";
     }
+    validatePlayButton();
   });
 });
 
@@ -87,7 +87,81 @@ startButton.addEventListener("click", function () {
   welcomeScreen.style.display = "none";
   gameScreen.style.display = "block";
 
-  console.log(gameState);
   player1Name.textContent = gameState.player1;
   player2Name.textContent = gameState.player2;
+
+  initGameBoard();
 });
+
+function initGameBoard() {
+  gameState.board = [];
+  for (let row = 0; row < BOARD_ROW; row++) {
+    gameState.board[row] = [];
+    for (let col = 0; col < BOARD_COL; col++) {
+      gameState.board[row][col] = {
+        value: 0,
+        player: 0,
+        disable: false,
+      };
+    }
+  }
+  disableBoard();
+  renderHex();
+}
+
+function disableBoard() {
+  let disable = [];
+  const count = gameState.difficulty[gameState.difficultyInput];
+  while (disable.length < count) {
+    row = Math.floor(Math.random() * BOARD_ROW);
+    col = Math.floor(Math.random() * BOARD_COL);
+    const coor = `${row}-${col}`;
+    if (!disable.includes(coor)) {
+      disable.push(coor);
+      gameState.board[row][col].disable = true;
+    }
+  }
+}
+
+function renderHex() {
+  const svg = document.getElementById("hexSvg");
+  svg.innerHTML = "";
+  for (let row = 0; row < BOARD_ROW; row++) {
+    for (let col = 0; col < BOARD_COL; col++) {
+      const x = col * HEX_WIDTH + (row % 2 === 0 ? HEX_WIDTH / 2 : 0) + 40;
+      const y = row * (HEX_HEIGHT * 0.75) + 40;
+
+      const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      group.setAttribute("class", "group");
+      group.setAttribute("data-row", row);
+      group.setAttribute("data-col", col);
+      svg.appendChild(group);
+
+      const points = getCoorPoint(x, y);
+      const polygon = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "polygon",
+      );
+
+      group.appendChild(polygon);
+      polygon.setAttribute("class", "polygon");
+      polygon.setAttribute("points", points);
+      polygon.setAttribute("fill", HEX_COLOR);
+      polygon.setAttribute("stroke", "#fff");
+      polygon.setAttribute("stroke-width", "1");
+    }
+  }
+}
+
+function getCoorPoint(cx, cy) {
+  const points = [];
+  for (let i = 0; i < 6; i++) {
+    const angleDeg = 60 * i - 90;
+    const angleRad = (Math.PI / 180) * angleDeg;
+    const x = cx + HEX_SIZE * Math.cos(angleRad);
+    const y = cy + HEX_SIZE * Math.sin(angleRad);
+    const point = `${x},${y}`;
+    points.push(point);
+  }
+  return points.join(" ");
+}
