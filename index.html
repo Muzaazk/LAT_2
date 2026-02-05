@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="icon" href="favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="welcome-screen">
+      <img src="logo.png" alt="" />
+      <div class="container-welcome-screen">
+        <div class="input-data">
+          <label class="input-player1">
+            Player 1 :
+            <input type="text" id="player1" />
+          </label>
+          <div class="input-opponent">
+            Select opponent :
+            <label>
+              <input type="radio" name="opponent" id="opponentPlayer2" /> Player
+              2 </label
+            ><label>
+              <input type="radio" name="opponent" id="opponentBot" /> Bot
+            </label>
+          </div>
+          <label class="input-player2">
+            Player 2 :
+            <input type="text" id="player2" />
+          </label>
+          <div class="input-difficult">
+            difficulty :
+            <label>
+              <input type="radio" name="difficult" id="easy" /> easy </label
+            ><label>
+              <input type="radio" name="difficult" id="medium" /> medium </label
+            ><label>
+              <input type="radio" name="difficult" id="hard" /> hard
+            </label>
+          </div>
+
+          <button id="startGameBtn">Start Game</button>
+        </div>
+
+        <div class="instruction">
+          <h2>Instruction</h2>
+          <ul>
+            <li>
+              Players take turns placing hexagons with random numbers (1-20)
+            </li>
+            <li>
+              Capture opponent's hexagons by placing higher value adjacent to
+              them
+            </li>
+            <li>
+              Place adjacent to your own color to add +1 t neighboring hexagons
+            </li>
+            <li>Game ends when all hexagon are filled</li>
+            <li>Highest total score wins!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-screen">
+        <img src="logo.png" alt="">
+        <div class="container-game-screen">
+            <div class="game-board">
+                <div class="hexagon">
+                    <svg id="hexSvg"></svg>
+                </div>
+                <div class="status-game">
+                    <div class="wrapp-status-game">
+                        <h3>current:</h3>
+                        <div class="name">
+                            <div class="player1">
+                                <div class="rec-player1"></div>
+                                <h5>Player 1</h5>
+                                <h2>score</h2>
+                            </div>
+                            <div class="player2">
+                                <div class="rec-player2"></div>
+                                <h5>Player 2</h5>
+                                <h2>score</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="leaderboard">
+                <h3>Leaderboard</h3>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

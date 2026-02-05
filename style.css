@@ -1,0 +1,66 @@
+* {
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: rgb(41, 41, 41);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.welcome-screen {
+  display: none;
+  background-color: #03062a;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.container-welcome-screen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.container .input-data {
+  text-align: left;
+  padding-top: 40px;
+}
+
+#startGameBtn {
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+.welcome-screen img,
+.game-screen img {
+  scale: 0.4;
+}
+
+input[type="text"] {
+  color: black;
+}
+
+/* game screen  */
+
+.game-screen {
+  position: absolute;
+}
+
+.container-game-screen {
+  border: 2px solid white;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.leaderboard {
+    padding: 10px;
+    height: auto;
+    border-left: 2px solid white;
+}
+
