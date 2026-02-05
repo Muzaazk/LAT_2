@@ -19,10 +19,22 @@
           <div class="input-opponent">
             Select opponent :
             <label>
-              <input type="radio" name="opponent" checked id="opponentPlayer2" value="player2"/> Player
-              2 </label
+              <input
+                type="radio"
+                name="opponent"
+                checked
+                id="opponentPlayer2"
+                value="player2"
+              />
+              Player 2 </label
             ><label>
-              <input type="radio" name="opponent" id="opponentBot" value="bot"/> Bot
+              <input
+                type="radio"
+                name="opponent"
+                id="opponentBot"
+                value="bot"
+              />
+              Bot
             </label>
           </div>
           <label class="input-player2">
@@ -32,11 +44,14 @@
           <div class="input-difficult">
             difficulty :
             <label>
-              <input type="radio" name="difficult" id="easy" /> easy </label
+              <input type="radio" name="difficult" id="easy" value="easy" />
+              easy </label
             ><label>
-              <input type="radio" name="difficult" id="medium" /> medium </label
+              <input type="radio" name="difficult" id="medium" value="medium" />
+              medium </label
             ><label>
-              <input type="radio" name="difficult" id="hard" /> hard
+              <input type="radio" name="difficult" id="hard" value="hard" />
+              hard
             </label>
           </div>
 
@@ -75,22 +90,22 @@
               <div class="wrap-current">
                 <h5 class="current">current:</h5>
                 <div id="currentRect"></div>
-                <h5>5</h5>
+                <h5></h5>
               </div>
               <div class="wrap-player">
                 <div class="player1">
                   <div class="col-1">
                     <div class="rec-player1"></div>
-                    <h6>Player 1</h6>
+                    <h6 id="player1Name"></h6>
                   </div>
-                  <h5 id="score1">score</h5>
+                  <h5 id="score1">0</h5>
                 </div>
                 <div class="player2">
                   <div class="col-2">
                     <div class="rec-player2"></div>
-                    <h6>Player 2</h6>
+                    <h6 id="player2Name"></h6>
                   </div>
-                  <h5 id="score2">score</h5>
+                  <h5 id="score2">0</h5>
                 </div>
               </div>
             </div>

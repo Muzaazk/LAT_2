@@ -31,11 +31,12 @@ const inputPlayer2 = document.querySelector(".input-player2");
 const player1 = document.getElementById("player1");
 const player2 = document.getElementById("player2");
 const difficulty = document.querySelectorAll("input[name='difficult']");
-const selectDIfficulty = document.querySelector(
-  "input[name='difficult']:checked",
-);
+const gameScreen = document.querySelector(".game-screen");
+const welcomeScreen = document.querySelector(".welcome-screen");
+const player1Name = document.getElementById("player1Name");
+const player2Name = document.getElementById("player2Name");
 
-startButton.disabled;
+startButton.disabled = true;
 startButton.style.background = "#ababab";
 startButton.style.cursor = "not-allowed";
 
@@ -45,10 +46,10 @@ opponents.forEach((opponent) => {
     validatePlayButton;
     if (chose === "bot") {
       inputPlayer2.style.display = "none";
-      gameState.player2 = "bot";
+      player2.value = "bot";
     } else {
       inputPlayer2.style.display = "inline";
-      gameState.player2 = player2.value;
+      player2.value = "Player 2";
     }
   });
 });
@@ -59,24 +60,34 @@ difficulty.forEach((diff) => {
 player1.addEventListener("input", validatePlayButton);
 player2.addEventListener("input", validatePlayButton);
 
-
 function validatePlayButton() {
-  console.log(gameState);
-  const player1 = player1.value 
+  const selectDIfficulty = document.querySelector(
+    "input[name='difficult']:checked",
+  );
+  const opponent = document.querySelector("input[name='opponent']:checked");
   if (
-    (!player1.value === "" && !player2.value === "" && selectDIfficulty) ||
-    (!player1.value === "" && selectDIfficulty && gameState.player === "bot")
+    (player1.value !== "" && player2.value !== "" && selectDIfficulty) ||
+    (player1.value !== "" && selectDIfficulty && opponent.value === "bot")
   ) {
-    startButton.enabled;
+    startButton.disabled = false;
     startButton.style.background = "green";
     startButton.style.cursor = "pointer";
   } else {
-    startButton.disabled;
+    startButton.disabled = true;
     startButton.style.background = "#ababab";
     startButton.style.cursor = "not-allowed";
   }
+  gameState.difficultyInput = selectDIfficulty.value;
+  gameState.isBot = opponent.value === "bot" ? true : false;
 }
 
 startButton.addEventListener("click", function () {
+  gameState.player1 = player1.value;
+  gameState.player2 = player2.value;
+  welcomeScreen.style.display = "none";
+  gameScreen.style.display = "block";
+
   console.log(gameState);
+  player1Name.textContent = gameState.player1;
+  player2Name.textContent = gameState.player2;
 });
